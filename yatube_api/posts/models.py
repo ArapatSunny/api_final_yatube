@@ -10,18 +10,17 @@ class Group(models.Model):
         verbose_name='Название группы',
         help_text='Дайте название группе')
     slug = models.SlugField(
-        unique=True, verbose_name='Адрес страницы группы',
-        help_text=('Укажите уникальный адрес для страницы группы. '
-                   'Используйте только латиницу, цифры, дефисы и '
-                   'знаки подчёркивания'), )
+        unique=True,
+        verbose_name='Уникальный фрагмент URL-адреса страницы группы',
+        help_text=('Укажите уникальный фрагмент URL-адреса '
+                   'для страницы группы. Используйте только латиницу, '
+                   'цифры, дефисы и знаки подчёркивания'),
+    )
     description = models.TextField(
         verbose_name='Описание', help_text='Опишите вашу группу', )
 
     class Meta:
         ordering = ['title']
-
-    def __str__(self):
-        return self.title
 
     def __repr__(self):
         return f'{self.title} :: {self.slug} :: {self.description[:15]} ...'
@@ -45,9 +44,6 @@ class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    def __str__(self):
-        return f'{self.text[:15]} ... '
-
     def __repr__(self):
         return (f'{self.text[:15]} ... '
                 f'({self.pub_date}, {self.author}, {self.group})')
@@ -66,9 +62,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-created']
-
-    def __str__(self):
-        return f'{self.text[:15]} ...'
 
     def __repr__(self):
         return (f'{self.text[:15]} ... '
@@ -93,9 +86,6 @@ class Follow(models.Model):
                 fields=['user', 'following'],
                 name="unique_followers")
         ]
-
-    def __str__(self):
-        return f'{self.user} follows {self.author}'
 
     def __repr__(self):
         return f'{self.user} follows {self.following}'
