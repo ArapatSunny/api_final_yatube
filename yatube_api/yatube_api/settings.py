@@ -1,9 +1,13 @@
 import os
+import environ
 from datetime import timedelta
+
+env = environ.Env()
+environ.Env.read_env()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'hhz7l-ltdismtf@bzyz+rple7*s*w$jak%whj@(@u0eok^f9k4'
+SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = True
 
