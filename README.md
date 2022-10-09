@@ -15,7 +15,7 @@ Django==2.2.16\
 djangorestframework==3.12.4\
 djangorestframework-simplejwt==4.7.2
 
-Модели: Post, Group, Comment, Follow\
+Модели: Post, Group, Comment, Follow
 
 Для авторизованных пользователей:\
 Обработка запросов\
@@ -47,7 +47,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 ```
-cd yatube/
+cd yatube_api/
 ```
 
 Создать файл .env с секретным ключом по примеру из .env.example
